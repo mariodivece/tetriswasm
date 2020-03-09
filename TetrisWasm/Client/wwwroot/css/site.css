@@ -1,0 +1,41 @@
+﻿table.tetris-board {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 0;
+    border-collapse: collapse;
+    border-width: 0;
+    border-spacing: 0;
+}
+
+td.tetris-cell {
+    border-collapse: collapse;
+    border-width: 1px;
+    border-color: #cdcdcd;
+    border-style: solid;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+td.piece-empty {
+    background-color: white;
+}
+
+td.piece-red {
+    background-color: red;
+}
+
+td.piece-green {
+    background-color: green;
+}
+
+td.piece-blue {
+    background-color: blue;
+}
+
+td.piece-yellow {
+    background-color: yellow;
+}

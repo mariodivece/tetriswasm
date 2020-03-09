@@ -1,0 +1,13 @@
+﻿<table class="tetris-board">
+    @for (var y = 0; y < Board.Height; y++)
+    {
+        <tr>
+            @for (var x = 0; x < Board.Width; x++)
+            {
+                <td class="tetris-cell piece-@Board[x, y].State.ToString().ToLowerInvariant()" @key="Board[x, y]"></td>
+            }
+        </tr>
+    }
+</table>
+
+<button @onclick="NextState">Next</button>
