@@ -8,7 +8,7 @@
 
         public void NextState()
         {
-            Board[1, 1].State = TetrisFillState.Blue;
+            Board.Tick();
         }
     }
 }

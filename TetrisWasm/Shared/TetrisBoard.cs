@@ -48,6 +48,13 @@
 
         public void Tick()
         {
+            if (CurrentPiece == null)
+            {
+                CurrentPiece = new TetrisPiece(TetrisPieceKind.O);
+            }
+
+            CurrentPiece.Draw(this);
+            CurrentPiece.Y++;
         }
     }
 }
