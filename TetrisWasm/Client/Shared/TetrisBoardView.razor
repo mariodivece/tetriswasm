@@ -1,13 +1,25 @@
-﻿<table class="tetris-board">
-    @for (var y = 0; y < Board.Height; y++)
-    {
-        <tr>
-            @for (var x = 0; x < Board.Width; x++)
-            {
-                <td class="tetris-cell piece-@Board[x, y].State.ToString().ToLowerInvariant()" @key="Board[x, y]"></td>
-            }
-        </tr>
-    }
-</table>
+﻿<table style="border-style: none; width: 720px; margin-left: auto; margin-right: auto; margin-top: 40px;">
+    <tr>
+        <td>
+            <table class="tetris-board">
+                @for (var y = 0; y < Board.Height; y++)
+                {
+                    <tr>
+                        @for (var x = 0; x < Board.Width; x++)
+                        {
+                            <td class="tetris-cell piece-@Board[x, y].Fill.ToString().ToLowerInvariant()" @key="Board[x, y]"></td>
+                        }
+                    </tr>
+                }
+            </table>
+        </td>
+        <td>
+            <a href="" @onclick="Start">New Game</a>
+            <button @onclick="MoveLeft">Left</button>
+            <button @onclick="MoveRight">Right</button>
+            <button @onclick="MoveDown">Down</button>
+            <button @onclick="Rotate">Rotate</button>
 
-<button @onclick="NextState">Next</button>
+        </td>
+    </tr>
+</table>
