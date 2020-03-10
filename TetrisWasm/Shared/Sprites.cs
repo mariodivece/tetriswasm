@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TetrisWasm.Shared
+﻿namespace TetrisWasm.Shared
 {
+    using System.Collections.Generic;
+
     public static class Sprites
     {
         private static readonly Dictionary<TetrisPieceKind, Dictionary<PieceRotation, int[]>> Lookup;

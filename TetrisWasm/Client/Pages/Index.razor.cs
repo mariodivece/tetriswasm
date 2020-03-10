@@ -18,7 +18,6 @@
             Board.GameLost += (s, e) => HasLostGame = true;
         }
 
-
         /// <summary>
         /// Gets or sets the board view reference.
         /// This gets automatically injected from the markup.
