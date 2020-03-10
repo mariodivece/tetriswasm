@@ -1,7 +1,6 @@
 ﻿table.tetris-board {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
     width: 0;
     border-collapse: collapse;
     border-width: 0;
@@ -13,6 +12,7 @@ td.tetris-cell {
     border-width: 1px;
     border-color: #cdcdcd;
     border-style: solid;
+    border-spacing: 0;
     width: 24px;
     height: 24px;
     overflow: hidden;
