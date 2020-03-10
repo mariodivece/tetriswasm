@@ -25,12 +25,13 @@
         Red,
         Green,
         Yellow,
-        Blue
+        Blue,
+        Pink,
     }
 
     public enum TetrisBoardState
     {
-        Paused,
+        Stopped,
         Running,
     }
 }

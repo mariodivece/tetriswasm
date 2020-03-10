@@ -1,6 +1,32 @@
 ﻿@page "/"
 
 <CascadingValue Name="Board" Value="Board">
-    <TetrisBoardView @ref="BoardView"></TetrisBoardView>
+    <table style="border-style: none; width: 720px; margin-left: auto; margin-right: auto; margin-top: 40px;">
+        <tr>
+            <td>
+                <TetrisBoardView @ref="BoardView" Interval="600"></TetrisBoardView>
+            </td>
+            <td style="width: 300px; vertical-align: top; padding-left: 10px;">
+                <p>
+                    Use the arrow keys to move the falling pieces.
+                    Use the UP or SPACE keys to rotate.
+                </p>
+                <p>
+                    <a href="" @onclick="StartGame">New Game</a>
+                </p>
+                <p>
+                    Score: <span style="font-weight: bold">@Board?.Score</span>
+                </p>
+
+                @if (HasLostGame)
+                {
+                    <div style="font-weight: bold; font-size: 18px; color: darkred">
+                        YOU LOSE!
+                    </div>
+                }
+            </td>
+        </tr>
+    </table>
+
     <TetrisBoardKeyboard OnInputCallback="OnKeyboardInput" />
 </CascadingValue>

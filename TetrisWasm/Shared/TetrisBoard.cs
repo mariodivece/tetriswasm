@@ -6,6 +6,9 @@
     {
         private readonly TetrisBoardCell[,] m_Cells;
 
+        public event EventHandler ScoredPoints;
+        public event EventHandler GameLost;
+
         public TetrisBoard()
         {
             m_Cells = new TetrisBoardCell[Width, Height];
@@ -76,8 +79,8 @@
 
             if (CurrentPiece == null)
             {
-                State = TetrisBoardState.Paused;
-                // TODO: you lost
+                State = TetrisBoardState.Stopped;
+                GameLost?.Invoke(this, EventArgs.Empty);
                 return;
             }
 
@@ -102,14 +105,19 @@
                 ForEachCell(c => { if (!c.IsEmpty) c.Fix(); });
 
                 // Score as many times as possible
+                var hasScored = false;
                 while (true)
                 {
                     var addedScore = TryScore();
                     if (addedScore <= 0)
                         break;
 
+                    hasScored = true;
                     Score += addedScore;
                 }
+
+                if (hasScored)
+                    ScoredPoints?.Invoke(this, EventArgs.Empty);
 
                 SpawnPiece();
             }
