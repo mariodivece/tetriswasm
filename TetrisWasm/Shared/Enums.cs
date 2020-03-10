@@ -11,6 +11,14 @@
         Z,
     }
 
+    public enum PieceRotation
+    {
+        Left,
+        Top,
+        Right,
+        Bottom
+    }
+
     public enum TetrisFillState
     {
         Empty,

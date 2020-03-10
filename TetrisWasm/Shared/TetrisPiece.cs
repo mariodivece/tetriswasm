@@ -18,68 +18,10 @@
             Kind = (TetrisPieceKind)Number.Next(0, maxPieceKind + 1);
             Color = (TetrisFillState)Number.Next(1, maxColor + 1);
             Board = board;
-            Sprite = new bool[4, 4];
-
-            switch (Kind)
-            {
-                case TetrisPieceKind.I:
-                    {
-                        Sprite[0, 0] = true;
-                        Sprite[0, 1] = true;
-                        Sprite[0, 2] = true;
-                        Sprite[0, 3] = true;
-                        break;
-                    }
-                case TetrisPieceKind.J:
-                    {
-                        Sprite[0, 0] = true;
-                        Sprite[0, 1] = true;
-                        Sprite[1, 1] = true;
-                        Sprite[2, 1] = true;
-                        break;
-                    }
-                case TetrisPieceKind.L:
-                    {
-                        Sprite[0, 1] = true;
-                        Sprite[1, 1] = true;
-                        Sprite[2, 1] = true;
-                        Sprite[2, 0] = true;
-                        break;
-                    }
-                case TetrisPieceKind.O:
-                    {
-                        Sprite[0, 0] = true;
-                        Sprite[0, 1] = true;
-                        Sprite[1, 0] = true;
-                        Sprite[1, 1] = true;
-                        break;
-                    }
-                case TetrisPieceKind.S:
-                    {
-                        Sprite[0, 1] = true;
-                        Sprite[1, 0] = true;
-                        Sprite[1, 1] = true;
-                        Sprite[2, 0] = true;
-                        break;
-                    }
-                case TetrisPieceKind.T:
-                    {
-                        Sprite[0, 0] = true;
-                        Sprite[1, 0] = true;
-                        Sprite[1, 1] = true;
-                        Sprite[2, 0] = true;
-                        break;
-                    }
-                case TetrisPieceKind.Z:
-                    {
-                        Sprite[0, 0] = true;
-                        Sprite[1, 1] = true;
-                        Sprite[1, 0] = true;
-                        Sprite[2, 1] = true;
-                        break;
-                    }
-            }
+            Sprite = Sprites.GetSprite(Kind, Rotation);
         }
+
+        public PieceRotation Rotation { get; private set; }
 
         public TetrisPieceKind Kind { get; private set; }
 
@@ -125,21 +67,18 @@
 
         public bool Rotate()
         {
-            var sourceWidth = Sprite.GetLength(0);
-            var sourceHeight = Sprite.GetLength(1);
-            var targetSprite = new bool[sourceHeight, sourceWidth];
+            var maxRotation = Enum.GetValues(typeof(PieceRotation)).Cast<int>().Max();
+            var currentRotation = (int)Rotation;
+            var nextRotation = currentRotation + 1 > maxRotation
+                ? PieceRotation.Left
+                : (PieceRotation)(currentRotation + 1);
 
-            for (var x = 0; x < sourceWidth; x++)
-            {
-                for (var y = 0; y < sourceHeight; y++)
-                {
-                    targetSprite[y, x] = Sprite[x, y];
-                }
-            }
+            var targetSprite = Sprites.GetSprite(Kind, nextRotation);
 
             if (TestBounds(Board, targetSprite, X, Y))
             {
                 Sprite = targetSprite;
+                Rotation = nextRotation;
                 return true;
             }
 
