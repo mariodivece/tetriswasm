@@ -1,5 +1,6 @@
 ﻿namespace TetrisWasm.Client.Shared
 {
+    using Microsoft.AspNetCore.Components;
     using System.Threading;
     using TetrisWasm.Shared;
 
@@ -16,7 +17,8 @@
             });
         }
 
-        public TetrisBoard Board { get; } = new TetrisBoard();
+        [CascadingParameter(Name = nameof(Board))]
+        public TetrisBoard Board { get; set; }
 
         public void Start()
         {
@@ -24,12 +26,6 @@
             BoardTimer.Change(600, 600);
         }
 
-        public void MoveLeft() => Board.MoveLeft();
-
-        public void MoveRight() => Board.MoveRight();
-
-        public void MoveDown() => Board.MoveDown();
-
-        public void Rotate() => Board.Rotate();
+        public void Refresh() => StateHasChanged();
     }
 }

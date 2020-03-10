@@ -1,3 +1,6 @@
 ﻿@page "/"
 
-<TetrisBoardView></TetrisBoardView>
+<CascadingValue Name="Board" Value="Board">
+    <TetrisBoardView @ref="BoardView"></TetrisBoardView>
+    <TetrisBoardKeyboard OnInputCallback="OnKeyboardInput" />
+</CascadingValue>
