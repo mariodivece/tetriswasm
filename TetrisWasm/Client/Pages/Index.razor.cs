@@ -1,5 +1,6 @@
 ﻿namespace TetrisWasm.Client.Pages
 {
+    using System;
     using TetrisWasm.Client.Shared;
     using TetrisWasm.Shared;
 
@@ -35,6 +36,7 @@
         {
             HasLostGame = false;
             BoardView?.Start();
+            Console.WriteLine("Started Game.");
         }
     }
 }

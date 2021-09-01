@@ -15,6 +15,7 @@
         {
             BoardTimer = new Timer((o) =>
             {
+                Console.WriteLine("Board Ticked.");
                 Board.Tick();
                 StateHasChanged();
             });

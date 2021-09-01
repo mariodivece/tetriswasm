@@ -8,7 +8,6 @@
 table.tetris-board {
     margin-left: auto;
     margin-right: auto;
-    width: 0;
     border-collapse: collapse;
     border-width: 0;
     border-spacing: 0;
